@@ -14,7 +14,7 @@
 			currentCluster.BreakFromPrefab();
 			currentCluster.NetworkSpawn();
 			Log.Info( "Cluster cloned and scanning started" );
-			Scanning = true; // Set scanning state
+			Scanning = true;
 
 		}
 
@@ -82,11 +82,6 @@
 
 		if (IsProxy)
 			return;
-		//todo:
-		// dispatch a prefab with the particle
-		// update its snapshot when we're still scanning
-		// if we release attack1, then stop everything
-		// Handle input states independently
 
 		if ( Input.Pressed( "attack1" ) )
 		{
@@ -95,14 +90,11 @@
 			StartScanning();
 		}
 
-		// Update scanning while "attack1" is held
 		if ( Input.Down( "attack1" )  )
 		{
-
 			UpdateScanning();
 		}
 
-		// Stop scanning when "attack1" is released
 		if ( Input.Released( "attack1" ) )
 		{
 			StopScanning();
